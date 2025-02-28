@@ -21,7 +21,6 @@ public class Main {
         System.out.println("Base64 Secret (paste this into jwt.io): " + BASE64_SECRET);
 
 
-
         System.out.println("Hello, JWT!");
 
         //server creates  a token
@@ -36,25 +35,25 @@ public class Main {
         System.out.println("Token: " + token);
 
         Claims claims = null;
-        try{
+        try {
             //builder pattern we dont have to care that the object type has changed, after build
 
-             claims = Jwts.parser()
+            claims = Jwts.parser()
                     .setSigningKey(BASE64_SECRET)
-                     .build()
+                    .build()
                     .parseSignedClaims(token)
                     .getPayload();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Invalid token!");
         }
 
 
-    if(claims != null){
-        System.out.println("Decoded Subject: " + claims.getSubject());
-        System.out.println("Token Expiration: " + claims.getExpiration());
+        if (claims != null) {
+            System.out.println("Decoded Subject: " + claims.getSubject());
+            System.out.println("Token Expiration: " + claims.getExpiration());
 
-    }
+        }
 
 
     }
